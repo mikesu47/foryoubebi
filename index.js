@@ -1,5 +1,11 @@
 /* index.js — Cute particle & sparkle effects */
 
+// Che-check kung nanggaling na sila sa 3rd page at nag-back/quit doon
+if (localStorage.getItem("forceResetIndex") === "true") {
+  localStorage.removeItem("forceResetIndex");
+  sessionStorage.clear();
+}
+
 // ─── FLOATING BG PARTICLES ───────────────────────────────────────────────────
 const EMOJIS = ["🤎", "💖", "❤️‍🔥", "💗", "❤️", "🍁", "💮", "🔴", "🎀", "💕"];
 const container = document.getElementById("bgParticles");

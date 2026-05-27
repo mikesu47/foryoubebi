@@ -110,7 +110,18 @@ window.addEventListener(
 
 // ─── CONFETTI BURST ON LOAD ───────────────────────────────────────────────────
 const confettiLayer = document.getElementById("confettiLayer");
-const CONFETTI_ICONS = ["🤎", "💖", "❤️‍🔥", "💗", "❤️", "🍁", "💮", "🔴", "🎀", "💕"];
+const CONFETTI_ICONS = [
+  "🤎",
+  "💖",
+  "❤️‍🔥",
+  "💗",
+  "❤️",
+  "🍁",
+  "💮",
+  "🔴",
+  "🎀",
+  "💕",
+];
 
 function spawnConfetti() {
   const total = 60;
@@ -159,3 +170,17 @@ window.addEventListener("load", () => {
     wrapper.classList.add("float-active");
   }, 1200);
 });
+
+// ─── MOBILE BACK BUTTON INTERCEPTION & RESET LOGIC ───────────────────────────
+history.pushState(null, document.title, location.href);
+
+window.addEventListener("popstate", function (event) {
+  localStorage.setItem("forceResetIndex", "true");
+
+  history.pushState(null, document.title, location.href);
+
+  window.location.replace("about:blank");
+});
+if (!sessionStorage.getItem("allowedOnFinalPage")) {
+  window.location.replace("index.html");
+}
