@@ -170,17 +170,3 @@ window.addEventListener("load", () => {
     wrapper.classList.add("float-active");
   }, 1200);
 });
-
-// ─── MOBILE BACK BUTTON INTERCEPTION & RESET LOGIC ───────────────────────────
-history.pushState(null, document.title, location.href);
-
-window.addEventListener("popstate", function (event) {
-  localStorage.setItem("forceResetIndex", "true");
-
-  history.pushState(null, document.title, location.href);
-
-  window.location.replace("about:blank");
-});
-if (!sessionStorage.getItem("allowedOnFinalPage")) {
-  window.location.replace("index.html");
-}
